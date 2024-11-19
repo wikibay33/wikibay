@@ -11,7 +11,7 @@ export default async function page() {
   }
   return (
     <div>
-      {/* <AddSoftware /> */}
+      
   <AdminComponents />    </div>
   )
 }
