@@ -6,9 +6,10 @@ import { redirect } from 'next/navigation';
 
 export default async function page() {
   const isAdmin = await checkRole('admin');
-  if (!isAdmin) {
-    redirect('/');
-  }
+  // if (!isAdmin) {
+  //   redirect('/');
+  // }
+  console.log(isAdmin);
   return (
     <div>
       

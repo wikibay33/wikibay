@@ -10,9 +10,10 @@ export default clerkMiddleware(async (auth, req) => {
   if (isAdminRoute(req)) {
     // Retrieve the session claims, including publicMetadata
     const { sessionClaims } = await auth();
-
+    console.log(sessionClaims);
     // Check if the user has the `admin` role in publicMetadata
     const role = sessionClaims?.metadata?.role;
+    console.log(role);
     if (role !== 'admin') {
       console.log('User is not an admin, redirecting to home.');
       const url = new URL('/', req.url);
