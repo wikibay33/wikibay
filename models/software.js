@@ -37,8 +37,13 @@ const SoftwareSchema = new mongoose.Schema({
     },
     customerSupport: {type: String},
     featuresFunctionality: {
-        generalFeatures: { type: String }, // [Anonymous Browsing,Kill Switch, Multi-Protocol]
-        FeaturesDescription: { type: Array }  // [{title: '', description:''}, {title2: '', description2:''}]
+        generalFeatures: { type: String, default: '' }, // General features summary
+        FeaturesDescription: [
+            {
+                title: { type: String },
+                description: { type: String },
+            },
+        ],
     },
     easeOfUse: { type: String },
     verdict: { type: String },
