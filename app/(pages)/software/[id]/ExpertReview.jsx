@@ -8,6 +8,11 @@ export default function ExpertReview({software}) {
     <>
     <div className='text-2xl font-bold'>ExpertReview</div>
     <ProgressBar software={software}/>
+    <div>
+    <h2 className='text-2xl font-bold py-5'>ExpertReview Summary</h2>
+    <p className='pb-5'>{software.expertReview.summary}</p>
+
+    </div>
     <ProsCons expretProsCons={software.expertReview || []}/>
     <h2 className='text-2xl font-bold py-5'>Customer Support</h2>
     <p>{software.customerSupport}</p>

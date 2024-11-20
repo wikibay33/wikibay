@@ -37,14 +37,14 @@ const SoftwareSchema = new mongoose.Schema({
     },
     customerSupport: {type: String},
     featuresFunctionality: {
-        generalFeatures: { type: String, default: '' }, // General features summary
-        FeaturesDescription: [
-            {
-                title: { type: String },
-                description: { type: String },
-            },
-        ],
-    },
+    generalFeatures: { type: String, default: '' }, // General features summary
+    FeaturesDescription: [
+        {
+            title: { type: String, required: true },
+            description: { type: String, required: true },
+        },
+    ],
+},
     easeOfUse: { type: String },
     verdict: { type: String },
     promotions: { type: String },

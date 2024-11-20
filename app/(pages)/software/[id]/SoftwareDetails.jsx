@@ -29,9 +29,9 @@ export default async function SoftwareDetails({ id }) {
 
         return (
             <div>
-                <div className='px-24 grid grid-cols-1 md:grid-cols-3 gap-4 p-10 sticky top-10 bg-white shadow-xl'>
+                <div className='px-16 grid grid-cols-1 md:grid-cols-3 gap-4 p-10 sticky top-8 bg-white shadow-xl'>
                     <div className='flex justify-center items-center'>
-                        <Image src={software.logo} width={100} height={100} alt='logo'/>
+                        <Image src={software.logo} width={70} height={70} alt='logo'/>
                     </div>
                     
                     <div className='px-10 justify-center items-center hidden md:flex'>
