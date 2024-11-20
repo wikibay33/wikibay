@@ -32,7 +32,7 @@ export default function AllBlogsAdmin() {
     <div className='bg-white min-h-[80vh]'>
       {data.map((blog) => (
         <div key={blog._id} className='blog-item md:p-8 p-4 border-b-2 mb-4 shadow-md rounded-md flex flex-col gap-3 cursor-pointer hover:shadow-lg transition-shadow duration-200 '>
-          <Link href={`/blog/${blog._id}`}>
+          <Link href={`/blogs/${blog._id}`}>
             <div className='w-full'>
               <h3 className='text-3xl'>{blog.title}</h3>
               <p className='text-lg mb-2'><strong>الكاتب:</strong> {blog.author}</p>

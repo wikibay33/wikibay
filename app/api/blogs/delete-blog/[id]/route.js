@@ -3,9 +3,9 @@ import Blog from '@/models/blog';
 
 export async function DELETE(request, { params }) {
   await connectToDB();
-
+  const { id } = await params;
   try {
-    const { id } = params;
+    
 
     if (!id) {
       return new Response(JSON.stringify({ error: 'ID is required' }), { status: 400 });

@@ -5,6 +5,7 @@ import Modal from '../modal/Modal';
 import { useRouter } from 'next/navigation';
 import Tiptap from '../blogForm/Tiptap';
 import { useUser } from '@clerk/nextjs';
+import MDEditor from '@uiw/react-md-editor';
 
 export default function EditDeleteBlog({ blog, onBlogUpdate, onBlogDelete }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -14,6 +15,7 @@ export default function EditDeleteBlog({ blog, onBlogUpdate, onBlogDelete }) {
   const [content, setContent] = useState(blog.content);
   const router = useRouter();
   const user = useUser();
+  const [image, setImage] = useState(blog.image);
 
   const handleUpdate = async () => {
     const updatedBlog = { ...blog, title, author, content };
@@ -26,7 +28,7 @@ export default function EditDeleteBlog({ blog, onBlogUpdate, onBlogDelete }) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ title, author, content }),
+      body: JSON.stringify({ title, author, content, image }),
     });
 
     if (response.ok) {
@@ -67,11 +69,11 @@ export default function EditDeleteBlog({ blog, onBlogUpdate, onBlogDelete }) {
         show={showDeleteModal}
         onClose={() => setShowDeleteModal(false)}
         onConfirm={handleDelete}
-        confirmText="مسح"
-        cancelText="الغاء"
+        confirmText="delete"
+        cancelText="cancel"
       >
         <div className='h-1/2-screen'>
-          <p className='text-black'>هل انت متأكد؟ </p>
+          <p className='text-black'>Are you sure? </p>
         </div>
       </Modal>
 
@@ -79,32 +81,54 @@ export default function EditDeleteBlog({ blog, onBlogUpdate, onBlogDelete }) {
         show={showUpdateModal}
         onClose={() => setShowUpdateModal(false)}
         onConfirm={handleUpdate}
-        confirmText="تعديل"
-        cancelText="الغاء"
+        confirmText="update"
+        cancelText="cancel"
       >
         <div className='flex flex-col gap-4 text-black'>
           <label>
-            العنوان:
+            title:
           </label>
           <input
             type='text'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className='border p-2 rounded'
-          />
+            className="form-control block w-full rounded-md border-b-2 border-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black p-2 bg-gray-200"
+            />
+
+<label htmlFor="title text-white">Image Url</label>
+<input
+className="form-control block w-full rounded-md border-b-2 border-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black p-2 bg-gray-200"
+  type="text"
+  id="image"
+  value={image}
+  onChange={(e) => setImage(e.target.value)}
+  required
+/>
           <label>
-            الكاتب:
+            Author:
           </label>
           <input
             type='text'
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            className='border p-2 rounded'
-          />
-          <label>
-            المحتوى:
-          </label>
-          <Tiptap content={content} setContent={setContent} />
+            className="form-control block w-full rounded-md border-b-2 border-black shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-black p-2 bg-gray-200"
+            />
+          <label htmlFor="content text-white">Content</label>
+          <MDEditor
+          value={content}
+          onChange={(value) => setContent(value)}
+          id="content"
+          preview="edit"
+          height={300}
+          style={{ borderRadius: 20, overflow: "hidden" }}
+          textareaProps={{
+            placeholder:
+              "Briefly describe your idea and what problem it solves",
+          }}
+          previewOptions={{
+            disallowedElements: ["style"],
+          }}
+        />
         </div>
       </Modal>
     </div>

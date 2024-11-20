@@ -3,9 +3,9 @@ import Blog from '@/models/blog';
 
 export async function PUT(request, { params }) {
   await connectToDB();
-
+  const { id } = await params;
   try {
-    const { id } = params;
+    
     const data = await request.json();
 
     if (!id) {

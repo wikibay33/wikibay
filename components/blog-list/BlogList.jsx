@@ -13,7 +13,7 @@ export default  function BlogList({data}) {
         {data.length === 0 && <h1>No Blogs created</h1>} 
         <div className='blog-list w-full'>
           {data.map((blog) => (
-            <Link href={`/blog/${blog._id}`} key={blog._id}>
+            <Link href={`/blogs/${blog._id}`} key={blog._id}>
               <div className='blog-item p-4 border-b-2 mb-4 shadow-md rounded-md flex flex-col gap-3 cursor-pointer hover:shadow-lg transition-shadow duration-200'>
                 <h3 className='text-3xl'>{blog.title}</h3>
                 <p className='text-lg mb-2'><strong>الكاتب:</strong> {blog.author}</p>

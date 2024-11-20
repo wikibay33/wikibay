@@ -19,3 +19,21 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+.md-editor-light {
+  background-color: #ffffff; /* Light background */
+  color: #000000;           /* Dark text */
+}
+
+.md-editor-light .w-md-editor-toolbar {
+  background-color: #f4f4f4; /* Light toolbar background */
+}
+
+.md-editor-light textarea {
+  background-color: #ffffff; /* Textarea background */
+  color: #000000;           /* Textarea text color */
+}
+
+.md-editor-light .w-md-editor-preview {
+  background-color: #f9f9f9; /* Preview background */
+  color: #000000;           /* Preview text color */
+}
