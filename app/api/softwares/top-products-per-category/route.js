@@ -3,6 +3,7 @@
 import { connectToDB } from '@/utils/database';
 import Software from '@/models/software';
 import { NextResponse } from 'next/server';
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
     try {
