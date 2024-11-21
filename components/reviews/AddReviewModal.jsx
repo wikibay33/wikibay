@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { CiStar } from "react-icons/ci";
 import { AiFillStar } from "react-icons/ai";
+import Link from "next/link";
 
 export default function AddReviewModal({ softwareId, onClose, onAdd }) {
   const { isSignedIn, user } = useUser();
@@ -48,9 +49,9 @@ export default function AddReviewModal({ softwareId, onClose, onAdd }) {
         {!isSignedIn ? (
           <div className="mt-4">
             <p>Please sign in to leave a review.</p>
-            <a href="/sign-in" className="text-blue-500 underline">
+            <Link href="/sign-in" className="text-blue-500 underline">
               Sign In
-            </a>
+            </Link>
           </div>
         ) : (
           <div className="mt-4">
