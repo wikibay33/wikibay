@@ -14,7 +14,7 @@ export async function GET() {
       Software.find({ category })
         .sort({ overallRating: -1 })
         .limit(3)
-        .select('name description logo priceRating easeOfUseRating featuresRating supportRating')
+        .select('name description logo priceRating easeOfUseRating featuresRating supportRating affiliateUrl')
         .lean()
     );
 
