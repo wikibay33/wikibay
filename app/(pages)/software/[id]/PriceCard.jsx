@@ -1,51 +1,50 @@
 import React from 'react';
 
 export default function PriceCard({ plan, index }) {
-  console.log(plan);
-
-  // Process featuresIncluded - handle both single and multiple items
-  const features =
-    plan.featuresIncluded.length > 0
-      ? plan.featuresIncluded[0]?.includes(',')
-        ? plan.featuresIncluded[0]?.split(',').map((feature) => feature.trim())
-        : [plan.featuresIncluded[0]]
-      : [];
-
   return (
     <div
-      className={`flex flex-col justify-start items-center gap-4 p-4 text-center border-2 ${
+      className={`flex flex-col justify-start items-center gap-4 p-4 text-center border-2 rounded-lg shadow-md ${
         index === 0
           ? 'border-t-red-400'
           : index === 1
           ? 'border-t-blue-400'
           : index === 2
           ? 'border-t-green-400'
-          : 'border-t-gray-400' // default color if index is not 0, 1, or 2
+          : 'border-t-gray-400'
       }`}
     >
-      <h2 className="text-3xl text-center">{plan.planName}</h2>
-      <h2
-        className={`text-3xl font-bold text-center ${
+      {/* Plan Name */}
+      <h2 className="text-3xl font-bold">{plan.planName}</h2>
+
+      {/* Plan Price */}
+      <h3
+        className={`text-2xl font-bold ${
           index === 0
             ? 'text-red-400'
             : index === 1
             ? 'text-blue-400'
             : index === 2
             ? 'text-green-400'
-            : 'border-t-gray-400' // default color if index is not 0, 1, or 2
+            : 'text-gray-400'
         }`}
       >
         ${plan.price}/mo
-      </h2>
-      <h2>{plan.additionalInfo}</h2>
-      <h2 className="font-bold border-grey border-t-2 p-2">{plan.planName} includes:</h2>
-      <ul className="list-disc text-left pl-4">
-        {features.map((feature, i) => (
-          <li key={i} className="mb-1">
-            {feature}
-          </li>
-        ))}
-      </ul>
+      </h3>
+
+      {/* Additional Information */}
+      <p className="text-sm text-gray-600 p-3 border-b-2 border-b-gray-300 w-full">{plan.additionalInfo}</p>
+
+      {/* Features Section */}
+      <div className="w-full text-left">
+        <h4 className="font-bold text-lg mb-2">{plan.planName} includes:</h4>
+        <ul className="list-disc pl-5">
+          {plan.featuresIncluded.map((feature, i) => (
+            <li key={i} className="text-gray-800 mb-1">
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default async function page() {
     console.log(blogs);
   return (
     <div>
-        <h1 className='text-3xl text-center py-4'>All Blogs</h1>
+        <h1 className='text-3xl text-center py-4'>Blog</h1>
          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center items-center gap-2 my-4'>
         {blogs && 
             (blogs.map((blog,i)=>{

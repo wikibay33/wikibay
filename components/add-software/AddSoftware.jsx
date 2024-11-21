@@ -5,50 +5,66 @@ import CreatableSelect from "react-select/creatable";
 
 // Sub-component for Plans Pricing
 const PlanPricing = ({ plansPricing, handleArrayChange, addPlan }) => (
-  <div>
-    <label className="block mb-2 text-sm font-medium">Plans Pricing</label>
-    {plansPricing.map((plan, index) => (
-      <div key={index} className="mb-4 border p-3 rounded-md">
-        <input
-          type="text"
-          placeholder="Plan Name"
-          value={plan.planName}
-          onChange={(e) => handleArrayChange(e, index, "planName", "plansPricing")}
-          className="w-full mb-2 p-2 border border-gray-300 rounded-md"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Price"
-          value={plan.price}
-          onChange={(e) => handleArrayChange(e, index, "price", "plansPricing")}
-          className="w-full mb-2 p-2 border border-gray-300 rounded-md"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Additional Info"
-          value={plan.additionalInfo}
-          onChange={(e) => handleArrayChange(e, index, "additionalInfo", "plansPricing")}
-          className="w-full mb-2 p-2 border border-gray-300 rounded-md"
-        />
-        <textarea
+    <div>
+      <label className="block mb-2 text-sm font-medium">Plans Pricing</label>
+      {plansPricing.map((plan, index) => (
+        <div key={index} className="mb-4 border p-3 rounded-md">
+          {/* Plan Name */}
+          <input
+            type="text"
+            placeholder="Plan Name"
+            value={plan.planName}
+            onChange={(e) => handleArrayChange(e, index, "planName", "plansPricing")}
+            className="w-full mb-2 p-2 border border-gray-300 rounded-md"
+            required
+          />
+  
+          {/* Plan Price */}
+          <input
+            type="text"
+            placeholder="Price"
+            value={plan.price}
+            onChange={(e) => handleArrayChange(e, index, "price", "plansPricing")}
+            className="w-full mb-2 p-2 border border-gray-300 rounded-md"
+            required
+          />
+  
+          {/* Additional Info */}
+          <input
+            type="text"
+            placeholder="Additional Info"
+            value={plan.additionalInfo}
+            onChange={(e) => handleArrayChange(e, index, "additionalInfo", "plansPricing")}
+            className="w-full mb-2 p-2 border border-gray-300 rounded-md"
+          />
+  
+          {/* Features Included */}
+          <textarea
           placeholder="Features Included (comma separated)"
-          value={plan.featuresIncluded}
-          onChange={(e) => handleArrayChange(e, index, "featuresIncluded", "plansPricing")}
+          defaultValue={plan.featuresIncluded} // Join with a space after commas for display
+          onBlur={(e) => {
+            const inputValue = e.target.value;
+            const updatedFeatures = inputValue.split(",").map((item) => item.trim()); // Split and trim by commas
+            handleArrayChange(
+              { target: { value: updatedFeatures } },
+              index,
+              "featuresIncluded",
+              "plansPricing"
+            );
+          }}
           className="w-full mb-2 p-2 border border-gray-300 rounded-md"
         />
-      </div>
-    ))}
-    <button
-      type="button"
-      onClick={addPlan}
-      className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
-    >
-      Add Plan
-    </button>
-  </div>
-);
+        </div>
+      ))}
+      <button
+        type="button"
+        onClick={addPlan}
+        className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+      >
+        Add Plan
+      </button>
+    </div>
+  );
 
 // Sub-component for Features Functionality
 const FeaturesFunctionality = ({
@@ -102,7 +118,7 @@ export default function AddSoftware() {
         easeOfUseRating: "",
         featuresRating: "",
         supportRating: "",
-        plansPricing: [{ planName: "", price: "", additionalInfo: "", featuresIncluded: "" }],
+        plansPricing: [{ planName: "", price: "", additionalInfo: "", featuresIncluded: [] }],
         expertReview: { summary: "", pros: [], cons: [] },
         customerSupport: "",
         featuresFunctionality: { generalFeatures: "", FeaturesDescription: [{ title: "", description: "" }] },
@@ -113,7 +129,7 @@ export default function AddSoftware() {
     
       const [categories, setCategories] = useState([]);
       const [error, setError] = useState("");
-    
+      console.log(formData);
       // URL validation function
       const isValidUrl = (url) => {
         try {
@@ -189,7 +205,7 @@ export default function AddSoftware() {
       };
       const handleArrayChange = (e, index, field, arrayName) => {
         const updatedArray = [...formData[arrayName]];
-        updatedArray[index][field] = e.target.value;
+        updatedArray[index][field] = e.target.value; // Update the specific field in the array
         setFormData({ ...formData, [arrayName]: updatedArray });
       };
     

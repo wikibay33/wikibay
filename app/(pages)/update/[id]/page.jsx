@@ -192,8 +192,16 @@ useEffect(() => {
               <input type="text" placeholder="Plan Name" value={plan.planName} onChange={(e) => handleNestedChange(index, "planName", e.target.value, "plansPricing")} className="w-full border px-2 py-1 rounded mb-2" />
               <input type="text" placeholder="Price" value={plan.price} onChange={(e) => handleNestedChange(index, "price", e.target.value, "plansPricing")} className="w-full border px-2 py-1 rounded mb-2" />
               <textarea placeholder="Additional Info" value={plan.additionalInfo} onChange={(e) => handleNestedChange(index, "additionalInfo", e.target.value, "plansPricing")} className="w-full border px-2 py-1 rounded mb-2" />
-              <textarea placeholder="Features Included (comma-separated)" value={plan.featuresIncluded.join(", ")} onChange={(e) => handleNestedChange(index, "featuresIncluded", e.target.value.split(",").map((item) => item.trim()), "plansPricing")} className="w-full border px-2 py-1 rounded" />
-            </div>
+              <textarea
+  placeholder="Features Included (comma separated)"
+  defaultValue={plan.featuresIncluded.join(", ")} // Join with commas for display
+  onBlur={(e) => {
+    const inputValue = e.target.value;
+    const updatedFeatures = inputValue.split(",").map((item) => item.trim()); // Split by commas and trim
+    handleNestedChange(index, "featuresIncluded", updatedFeatures, "plansPricing"); // Update the array
+  }}
+  className="w-full mb-2 p-2 border border-gray-300 rounded-md"
+/>        </div>
           ))}
           <button type="button" onClick={addPlan} className="mt-2 px-3 py-1 bg-green-500 text-white rounded">Add Plan</button>
         </div>

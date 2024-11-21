@@ -11,9 +11,9 @@ export default function Footer() {
           <h3 className="font-bold text-lg mb-4">Menu Links</h3>
           <ul className="space-y-2 text-sm">
             <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/partners">Partners</Link></li>
+            {/* <li><Link href="/partners">Partners</Link></li> */}
             <li><Link href="/contact">Contact Us</Link></li>
-            <li><Link href="/blog">Blog</Link></li>
+            <li><Link href="/blogs">Blog</Link></li>
           </ul>
         </div>
 
@@ -21,9 +21,9 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-lg mb-4">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li><Link href="/terms">Terms of Use</Link></li>
-            <li><Link href="/privacy">Privacy Policy</Link></li>
-            <li><Link href="/rate">How We Rate</Link></li>
+            <li><Link href="/terms-of-use">Terms of Use</Link></li>
+            <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+            {/* <li><Link href="/rate">How We Rate</Link></li> */}
           </ul>
         </div>
 
