@@ -42,16 +42,17 @@ export default function SearchResults() {
       ) : (
         <div className="grid grid-cols-1 gap-4">
           {results.map((software) => (
-            <div key={software._id} className="p-4 border rounded-lg flex flex-col md:flex-row gap-8">
+            <Link href={`/software/${software._id}`} key={software._id}> <div  className="p-4 border rounded-lg flex flex-col md:flex-row gap-8">
               <Image src={software.logo} width={100} height={100} alt={software.name} />
               <div>
                 <h2 className="text-xl font-semibold">{software.name}</h2>
                 <p>{software.description}</p>
-                <Link href={`/software/${software._id}`}>
+               
                   <span className="text-blue-500 hover:underline mt-2">Read More</span>
-                </Link>
+                
               </div>
             </div>
+            </Link>
           ))}
         </div>
       )}
