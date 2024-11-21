@@ -42,7 +42,7 @@ export default function SearchResults() {
       ) : (
         <div className="grid grid-cols-1 gap-4">
           {results.map((software) => (
-            <Link href={`/software/${software._id}`} key={software._id}> <div  className="p-4 border rounded-lg flex flex-col md:flex-row gap-8">
+            <Link href={`/software/${software._id}`} key={software._id}> <div  className="p-4 border-2  border-gray-300 rounded-xl flex flex-col md:flex-row gap-8 relative">
               <Image src={software.logo} width={100} height={100} alt={software.name} />
               <div>
                 <h2 className="text-xl font-semibold">{software.name}</h2>
@@ -50,6 +50,9 @@ export default function SearchResults() {
                
                   <span className="text-blue-500 hover:underline mt-2">Read More</span>
                 
+              </div>
+              <div className='absolute top-0 right-0 border-2 border-gray-400 px-3 rounded-xl bg-teal-800 text-white'>
+                {software.category}
               </div>
             </div>
             </Link>

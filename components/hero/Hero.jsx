@@ -30,7 +30,7 @@ export default function Hero() {
           <Search className="px-1 m-1 cursor-pointer" onClick={handleSearch} />
           <input
             type="text"
-            placeholder="Search software, categories ..."
+            placeholder="Search software"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyPress={handleKeyPress}
