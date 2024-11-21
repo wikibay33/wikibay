@@ -6,7 +6,8 @@ const ReviewSchema = new mongoose.Schema({
     username: { type: String, required: true },
     rating: { type: Number, min: 0, max: 5, required: true },
     comment: { type: String, required: true },
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    userId: { type: String, required: true }, // Ensure this is defined correctly
 });
 
 // Main software schema

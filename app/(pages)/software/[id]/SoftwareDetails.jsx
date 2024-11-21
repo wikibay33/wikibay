@@ -29,7 +29,7 @@ export default async function SoftwareDetails({ id }) {
 
         return (
             <div>
-                <div className='px-16 grid grid-cols-1 md:grid-cols-3 gap-4 p-10 sticky top-8 bg-white shadow-xl'>
+                <div className='px-16 grid grid-cols-1 md:grid-cols-3 gap-4 p-10 sticky top-10 bg-white shadow-xl'>
                     <div className='flex justify-center items-center'>
                         <Image src={software.logo} width={70} height={70} alt='logo'/>
                     </div>
@@ -58,7 +58,7 @@ export default async function SoftwareDetails({ id }) {
                 {/* Pass the plansPricing safely */}
                 <SoftwarePricing plansPricing={plansPricing} />
 
-                <div className='grid grid-cols-1 lg:grid-cols-2 p-10'>
+                <div className='grid grid-cols-1 lg:grid-cols-2 '>
                     <div className="border-b lg:border-b-0 lg:border-r border-gray-300 p-4">
                         <ExpertReview software={software} />
                     </div>
