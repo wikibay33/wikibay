@@ -18,11 +18,17 @@ blogs = blogs.slice(0, 12); // Limit to 12 blogs
                 return <Link href={`/blogs/${blog._id}`} key={i} ><div className='w-full flex-col justify-center items-center  p-2 border-2 border-gray-300'>
                     <Image src={blog.image} alt={blog.title} width={1000} height={100} className='w-full max-h-48'/> 
                     <h2 
-    className='text-2xl font-semibold line-clamp-2 h-[5rem] overflow-hidden'
-    style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }}
+    className="text-2xl font-semibold line-clamp-2 overflow-hidden"
+    style={{
+        display: '-webkit-box',
+        WebkitLineClamp: 2, // Ensure this matches the desired number of lines
+        WebkitBoxOrient: 'vertical',
+        overflow: 'hidden', // Ensure text overflow is handled properly
+        textOverflow: 'ellipsis', // Add ellipsis for the truncated text
+    }}
 >
     {blog.title}
-</h2>   
+</h2>
                     <div className='flex justify-between items-center'>
                     
                     <h2  className='flex justify-between items-center gap-1'><FaUser/> {blog.author}</h2>

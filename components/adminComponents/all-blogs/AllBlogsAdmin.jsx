@@ -5,15 +5,18 @@ import parse from 'html-react-parser';
 
 export default function AllBlogsAdmin() {
   const [data, setData] = useState([]);
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_PROD_URL ? process.env.NEXT_PUBLIC_BACKEND_PROD_URL : process.env.NEXT_PUBLIC_BACKEND_DEV_URL}api/blogs/get-blogs`);
-      const res = await response.json();
+      const response = await fetch(`${baseUrl}/api/blogs/get-blogs`)
+            const res = await response.json();
       setData(res);
     };
     fetchData();
   }, []);
 
+  console.log(data);
   const handleBlogUpdate = (updatedBlog) => {
     const updatedData = data.map(blog => blog._id === updatedBlog._id ? updatedBlog : blog);
     setData(updatedData);
@@ -26,7 +29,7 @@ export default function AllBlogsAdmin() {
   };
 
   if(data.length === 0) {
-    return <div className='text-white min-h-[80vh] flex flex-col justify-center items-center '>لا يوجد حتى الان</div>
+    return <div className='text-white min-h-[80vh] flex flex-col justify-center items-center '>No Blogs yet</div>
   }
   return (
     <div className='bg-white min-h-[80vh]'>
@@ -35,7 +38,7 @@ export default function AllBlogsAdmin() {
           <Link href={`/blogs/${blog._id}`}>
             <div className='w-full'>
               <h3 className='text-3xl'>{blog.title}</h3>
-              <p className='text-lg mb-2'><strong>الكاتب:</strong> {blog.author}</p>
+              <p className='text-lg mb-2'><strong>Author:</strong> {blog.author}</p>
               <span className='text-lg flex flex-wrap gap-2 overflow-hidden'>{parse(blog.content.slice(0, 100))}...</span>
             </div>
           </Link>
