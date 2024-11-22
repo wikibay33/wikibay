@@ -1,6 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "../components/navbar/Navbar";
+import { Analytics } from "@vercel/analytics/react"
+
 import {
   ClerkProvider,
   SignInButton,
@@ -35,6 +37,7 @@ export default function RootLayout({ children }) {
         <Navbar />
        <main className="flex-grow">{children}</main> 
         <Footer />
+        <Analytics />
       </body>
     </html>
     </ClerkProvider>
