@@ -3,7 +3,6 @@ import ProgressBar from './ProgressBar'
 import ProsCons from './ProsCons'
 
 export default function ExpertReview({software}) {
-  console.log(software);
   return (
     <>
     <div className='text-2xl font-bold'>ExpertReview</div>

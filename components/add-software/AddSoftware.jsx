@@ -129,7 +129,6 @@ export default function AddSoftware() {
     
       const [categories, setCategories] = useState([]);
       const [error, setError] = useState("");
-      console.log(formData);
       // URL validation function
       const isValidUrl = (url) => {
         try {

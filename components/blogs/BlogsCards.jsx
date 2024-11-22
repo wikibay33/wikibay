@@ -10,7 +10,6 @@ export default async function BlogsCards() {
     });
     let blogs = await response.json();
 blogs = blogs.slice(0, 12); // Limit to 12 blogs
-    console.log(blogs);
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center items-center gap-2 my-4'>
         {blogs && 

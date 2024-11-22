@@ -12,7 +12,6 @@ export default async function HomePageCategories() {
   });
   
   const topProductsData = await response.json();
-  console.log(topProductsData);
 
   return <CategoryProductsClient topProductsData={topProductsData} />;
 }

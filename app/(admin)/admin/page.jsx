@@ -9,7 +9,6 @@ export default async function page() {
   // if (!isAdmin) {
   //   redirect('/');
   // }
-  console.log(isAdmin);
   return (
     <div>
       

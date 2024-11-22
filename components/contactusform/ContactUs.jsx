@@ -19,7 +19,6 @@ export default function ContactUs({hero}) {
   const [formStatus, setFormStatus] = useState(null);
   const [isLoading, setIsLoading] = useState(false); // New state for loading
 
-  console.log(formData);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -131,7 +130,6 @@ useEffect(() => {
     }
    },[formStatus]);
 
-   console.log(formStatus);
   return (
     
     <div className={`p-8  ${hero ? 'text-white':'text-black'} `}>

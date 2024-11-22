@@ -16,7 +16,6 @@ export default function AllBlogsAdmin() {
     fetchData();
   }, []);
 
-  console.log(data);
   const handleBlogUpdate = (updatedBlog) => {
     const updatedData = data.map(blog => blog._id === updatedBlog._id ? updatedBlog : blog);
     setData(updatedData);
